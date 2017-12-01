@@ -7,8 +7,19 @@
 </ion-header>
 
 <ion-content padding>
-  The world is your oyster.
-  <p>
-    If you get lost, the <a href="http://ionicframework.com/docs/v2">docs</a> will be your guide.
-  </p>
+  <img src="{{pathForImage(lastImage)}}" style="width: 100%" [hidden]="lastImage === null">
+  <h3 [hidden]="lastImage !== null">Seleccione</h3>
+
+  <ion-footer>
+    <ion-toolbar color="primary">
+      <ion-buttons>
+        <button ion-button icon-left (click)="presentActionSheet()">
+          <ion-icon name="camera"></ion-icon>Selecione Imagen
+        </button>
+        <button ion-button icon-left (click)="uploadImage()" [disabled]="lastImage === null">
+          <ion-icon name="cloud-upload"></ion-icon>Subir
+        </button>
+      </ion-buttons>
+    </ion-toolbar>
+  </ion-footer>
 </ion-content>
