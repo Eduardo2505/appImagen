@@ -6,9 +6,19 @@
   </ion-navbar>
 </ion-header>
 
-<ion-content padding>
-  <img src="{{pathForImage(lastImage)}}" style="width: 100%" [hidden]="lastImage === null">
-  <h3 [hidden]="lastImage !== null">Seleccione</h3>
+<ion-content class="card-background-page">
+
+      <ion-card *ngIf="image">
+        <img [src]="image" *ngIf="image" />
+      </ion-card>
+ xxx
+<div *ngFor="let photo of photos">
+
+    <ion-card>
+        <img [src]="photo" *ngIf="photo" />
+    </ion-card>
+
+</div>
 
   <ion-footer>
     <ion-toolbar color="primary">
@@ -16,9 +26,13 @@
         <button ion-button icon-left (click)="presentActionSheet()">
           <ion-icon name="camera"></ion-icon>Selecione Imagen
         </button>
-        <button ion-button icon-left (click)="uploadImage()" [disabled]="lastImage === null">
+        <button ion-button icon-left (click)="uploadImagecam()" *ngIf="image">
           <ion-icon name="cloud-upload"></ion-icon>Subir
         </button>
+
+        <button ion-button icon-left (click)="subir()" >
+            <ion-icon name="cloud-upload"></ion-icon>Subir
+          </button>
       </ion-buttons>
     </ion-toolbar>
   </ion-footer>
